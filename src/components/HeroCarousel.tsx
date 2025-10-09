@@ -9,6 +9,7 @@ interface HeroCarouselProps {
   title: string;
   subtitle: string;
   description: string;
+  language?: 'en' | 'th';
 }
 
 export default function HeroCarousel({
@@ -16,6 +17,7 @@ export default function HeroCarousel({
   title,
   subtitle,
   description,
+  language = 'en',
 }: HeroCarouselProps) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [hideTimer, setHideTimer] = useState<NodeJS.Timeout | null>(null);
@@ -72,15 +74,18 @@ export default function HeroCarousel({
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-2xl"
+                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 drop-shadow-2xl"
               >
+                <span className="text-blue-700 drop-shadow-lg">
+                  {language === 'th' ? 'เมเปิล ไทย' : 'Maple Thai'}
+                </span>{' '}
                 {title}
               </motion.h1>
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-xl md:text-2xl lg:text-3xl mb-2 drop-shadow-2xl font-semibold"
+                className="text-lg md:text-xl lg:text-2xl mb-2 drop-shadow-2xl font-semibold"
               >
                 {subtitle}
               </motion.p>
