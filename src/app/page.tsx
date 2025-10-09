@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import HeroCarousel from '@/components/HeroCarousel';
 import AnimatedServiceCard from '@/components/AnimatedServiceCard';
@@ -448,33 +449,33 @@ export default function Home() {
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                     {language === 'en' ? 'Home' : 'หน้าแรก'}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/services"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {language === 'en' ? 'Services' : 'บริการ'}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/about"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {language === 'en' ? 'About Us' : 'เกี่ยวกับเรา'}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/contact"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {language === 'en' ? 'Contact' : 'ติดต่อ'}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
