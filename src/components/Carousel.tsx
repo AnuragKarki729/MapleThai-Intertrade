@@ -34,7 +34,7 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
   };
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-2xl group bg-slate-900">
+    <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-2xl group bg-neutral-900">
       {/* Images */}
       <div className="relative w-full h-full flex items-center justify-center">
         {images.map((image, index) => (
@@ -59,7 +59,7 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
         aria-label="Previous slide"
       >
         <svg
@@ -79,7 +79,7 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
         aria-label="Next slide"
       >
         <svg
@@ -105,8 +105,8 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? 'bg-white w-8'
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-orange-500 w-8 shadow-lg shadow-orange-500/50'
+                : 'bg-white/50 hover:bg-orange-400/75'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

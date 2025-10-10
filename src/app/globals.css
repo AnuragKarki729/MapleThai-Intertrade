@@ -17,18 +17,18 @@
   --purple-900: #1f0939;
   --purple-950: #12051f;
 
-  /* Deep Blue Shades - Much Darker */
-  --blue-50: #0a1628;
-  --blue-100: #0d1b35;
-  --blue-200: #11234a;
-  --blue-300: #162e5f;
-  --blue-400: #1a3770;
-  --blue-500: #1e4085;
-  --blue-600: #18336b;
-  --blue-700: #122752;
-  --blue-800: #0d1b3a;
-  --blue-900: #08111f;
-  --blue-950: #040a12;
+  /* Deep Orange Shades - Much Darker */
+  --orange-50: #281a0a;
+  --orange-100: #35200d;
+  --orange-200: #4a2d11;
+  --orange-300: #5f3b16;
+  --orange-400: #70461a;
+  --orange-500: #85521e;
+  --orange-600: #6b4218;
+  --orange-700: #523312;
+  --orange-800: #3a240d;
+  --orange-900: #1f1308;
+  --orange-950: #120a04;
 
   /* Accent Cyan */
   --cyan-50: #ecfeff;
@@ -75,18 +75,18 @@
   --color-purple-900: var(--purple-900);
   --color-purple-950: var(--purple-950);
 
-  /* Blue Brand Colors */
-  --color-blue-50: var(--blue-50);
-  --color-blue-100: var(--blue-100);
-  --color-blue-200: var(--blue-200);
-  --color-blue-300: var(--blue-300);
-  --color-blue-400: var(--blue-400);
-  --color-blue-500: var(--blue-500);
-  --color-blue-600: var(--blue-600);
-  --color-blue-700: var(--blue-700);
-  --color-blue-800: var(--blue-800);
-  --color-blue-900: var(--blue-900);
-  --color-blue-950: var(--blue-950);
+  /* Orange Brand Colors */
+  --color-orange-50: var(--orange-50);
+  --color-orange-100: var(--orange-100);
+  --color-orange-200: var(--orange-200);
+  --color-orange-300: var(--orange-300);
+  --color-orange-400: var(--orange-400);
+  --color-orange-500: var(--orange-500);
+  --color-orange-600: var(--orange-600);
+  --color-orange-700: var(--orange-700);
+  --color-orange-800: var(--orange-800);
+  --color-orange-900: var(--orange-900);
+  --color-orange-950: var(--orange-950);
 
   /* Cyan Accent */
   --color-cyan-50: var(--cyan-50);

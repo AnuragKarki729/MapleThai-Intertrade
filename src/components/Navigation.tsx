@@ -32,7 +32,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-2xl md:text-3xl font-bold">
-              <span className="text-cyan-400">Maple Thai</span>
+              <span className="text-amber-600">Maple Thai</span>
               <span className="text-white"> Intertrade</span>
             </div>
           </Link>

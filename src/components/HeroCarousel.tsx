@@ -76,7 +76,7 @@ export default function HeroCarousel({
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 drop-shadow-2xl"
               >
-                <span className="text-blue-700 drop-shadow-lg">
+                <span className="text-orange-100 drop-shadow-lg">
                   {language === 'th' ? 'เมเปิล ไทย' : 'Maple Thai'}
                 </span>{' '}
                 {title}
