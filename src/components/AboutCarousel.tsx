@@ -16,7 +16,7 @@ const carouselContent = [
   {
     id: 'expertise',
     paragraph: 'paragraph2',
-    image: '/landing_page/2.png',
+   
     alt: 'Expertise',
     imgClass: 'from-orange-600 to-red-700',
     textClass: 'md:text-right',
@@ -25,7 +25,7 @@ const carouselContent = [
   {
     id: 'values',
     paragraph: 'paragraph3',
-    image: '/landing_page/3.png',
+    
     alt: 'Company Values',
     imgClass: 'from-orange-500 to-yellow-600',
     textClass: '',
@@ -68,7 +68,7 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
             transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
             className={`flex-shrink-0 ${floatClass}`}
           >
-            <div
+            {/* <div
               className={`w-16 h-16 md:w-30 md:h-30 bg-gradient-to-br ${currentContent.imgClass} rounded-xl flex items-center justify-center shadow-lg overflow-hidden ring-2 ring-orange-600/50`}
             >
               <Image
@@ -79,7 +79,7 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
                 className="w-full h-full object-cover"
                 unoptimized
               />
-            </div>
+            </div> */}
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

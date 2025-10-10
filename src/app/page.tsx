@@ -3,12 +3,15 @@
 import Link from 'next/link';
 import { useLanguageStore } from '@/store/languageStore';
 import ServiceCards from '@/components/ServiceCards';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import AboutCarousel from '@/components/AboutCarousel';
+import { useState } from 'react';
 
 export default function Home() {
   const { language, toggleLanguage } = useLanguageStore();
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Service images for donut chart center carousel
   const serviceImages = [
@@ -18,6 +21,40 @@ export default function Home() {
     '/services/products/service4.png',
     '/services/products/service5.png',
     '/services/products/service6.png',
+  ];
+
+  // Service categories for dropdown
+  const serviceCategories = [
+    {
+      id: 'visitor',
+      name: language === 'en' ? 'Visitor Management' : 'จัดการผู้มาเยือน',
+      route: '/services/visitor-management',
+    },
+    {
+      id: 'parking',
+      name: language === 'en' ? 'Parking Management' : 'จัดการที่จอดรถ',
+      route: '/services/parking-management',
+    },
+    {
+      id: 'access',
+      name: language === 'en' ? 'Access Manager' : 'จัดการการเข้าออก',
+      route: '/services/access-management',
+    },
+    {
+      id: 'security',
+      name: language === 'en' ? 'Security Management' : 'จัดการความปลอดภัย',
+      route: '/services/security-management',
+    },
+    {
+      id: 'warehouse',
+      name: language === 'en' ? 'Warehouse Solution' : 'โซลูชันคลังสินค้า',
+      route: '/services/warehouse-solution',
+    },
+    {
+      id: 'ai',
+      name: language === 'en' ? 'AI Smart' : 'AI อัจฉริยะ',
+      route: '/services/ai-smart',
+    },
   ];
 
   const content = {
@@ -148,13 +185,78 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             <div className="flex items-center gap-3">
+              {/* Hamburger Menu Button - Mobile Only */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden text-amber-600 hover:text-orange-500 transition-colors p-2"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+
               <h2 className="text-2xl md:text-3xl font-bold text-amber-600">Maple Thai Intertrade</h2>
             </div>
-            <nav className="hidden items-center gap-8 md:flex">
-              <Link className="text-sm font-medium text-gray-300 hover:text-orange-500 transition-colors" href="/">{text.nav.home}</Link>
-              <Link className="text-sm font-medium text-gray-300 hover:text-orange-500 transition-colors" href="/services">{text.nav.services}</Link>
 
-              <Link className="text-sm font-medium text-gray-300 hover:text-orange-500 transition-colors" href="/contact">{text.nav.contact}</Link>
+            {/* Desktop Navigation */}
+            <nav className="hidden items-center gap-8 md:flex relative">
+              <Link className="text-sm font-medium border-1 px-4 py-2 rounded-2xl border-amber-600 hover:border-orange-500
+                                hover:scale-105 transition-all duration-300 hover:text-amber-700 transition-colors" href="/">{text.nav.home}</Link>
+
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
+                <button className="text-sm font-medium border-1 px-4 py-2 rounded-2xl border-amber-600 hover:border-orange-500
+                                hover:scale-105 transition-all duration-300 hover:text-amber-700 flex items-center gap-2">
+                  {text.nav.services}
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full mt-2 left-0 w-64 bg-black/95 backdrop-blur-md border border-orange-900/50 rounded-xl shadow-2xl overflow-hidden z-50"
+                    >
+                      {/* Explore All Services - Top Option */}
+                      <Link
+                        href="/services"
+                        className="block px-4 py-3 text-sm font-semibold text-amber-500 hover:bg-orange-600/20 hover:text-amber-400 transition-all border-b border-orange-900/30"
+                      >
+                        {language === 'en' ? 'Explore All Services' : 'สำรวจบริการทั้งหมด'}
+                      </Link>
+
+                      {/* Individual Service Categories */}
+                      {serviceCategories.map((category) => (
+                        <Link
+                          key={category.id}
+                          href={category.route}
+                          className="block px-4 py-3 text-sm text-gray-300 hover:bg-orange-600/20 hover:text-white transition-all"
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link className="text-sm font-medium border-1 px-4 py-2 rounded-2xl border-amber-600 hover:border-orange-500
+                                hover:scale-105 transition-all duration-300 hover:text-amber-700 transition-colors" href="/contact">{text.nav.contact}</Link>
             </nav>
             <button
               onClick={toggleLanguage}
@@ -164,6 +266,67 @@ export default function Home() {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-black/98 backdrop-blur-md border-t border-orange-900/30 overflow-hidden"
+            >
+              <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
+                {/* Home */}
+                <Link
+                  href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-medium text-gray-300 hover:bg-orange-600/20 hover:text-white rounded-lg transition-all"
+                >
+                  {text.nav.home}
+                </Link>
+
+                {/* Services - Expandable */}
+                <div>
+                  <div className="px-4 py-3 text-sm font-medium text-amber-500 border-b border-orange-900/30">
+                    {text.nav.services}
+                  </div>
+
+                  {/* Explore All Services */}
+                  <Link
+                    href="/services"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-6 py-2 text-sm font-semibold text-amber-400 hover:bg-orange-600/20 transition-all"
+                  >
+                    {language === 'en' ? 'Explore All Services' : 'สำรวจบริการทั้งหมด'}
+                  </Link>
+
+                  {/* Service Categories */}
+                  {serviceCategories.map((category) => (
+                    <Link
+                      key={category.id}
+                      href={category.route}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block px-6 py-2 text-sm text-gray-400 hover:bg-orange-600/20 hover:text-white transition-all"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Contact */}
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-medium text-gray-300 hover:bg-orange-600/20 hover:text-white rounded-lg transition-all"
+                >
+                  {text.nav.contact}
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="flex-grow">
@@ -199,7 +362,7 @@ export default function Home() {
               <ServiceCards language={language} serviceImages={serviceImages} />
             </motion.div>
 
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -208,20 +371,70 @@ export default function Home() {
               {language === 'en'
                 ? 'Hover over cards to see services • Click to explore'
                 : 'เลื่อนเมาส์เพื่อดูบริการ • คลิกเพื่อสำรวจ'}
-            </motion.p>
+            </motion.p> */}
           </div>
         </section>
 
         {/* Contact Banner Section */}
-        <section className="relative py-6 md:py-8 overflow-hidden bg-gradient-to-r from-black via-orange-600 to-black">
-          <div className="absolute inset-0 opacity-10">
+        <section className="relative py-6 md:py-8 overflow-hidden bg-gradient-to-r from-white/5 via-amber-900 to-white/5">
+          {/* Animated Logo Background */}
+          <div className="absolute inset-0 flex items-center overflow-hidden opacity-60 z-10">
+            <div className="flex animate-scroll-left whitespace-nowrap items-center h-full py-4">
+              {/* First set of logos */}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
+                <div key={`bg-logo-${num}`} className="inline-flex items-center justify-center mx-8 flex-shrink-0">
+                  <div className="h-30 min-w-[120px] max-w-[200px] flex items-center justify-center bg-transparent rounded-lg px-4 py-2">
+                    <Image
+                      src={`/landing_page/clients/client${num}.png`}
+                      alt={`Client ${num}`}
+                      width={180}
+                      height={80}
+                      className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
+                <div key={`bg-logo-dup-${num}`} className="inline-flex items-center justify-center mx-8 flex-shrink-0">
+                  <div className="h-30 min-w-[120px] max-w-[200px] flex items-center justify-center bg-transparent rounded-lg px-4 py-2">
+                    <Image
+                      src={`/landing_page/clients/client${num}.png`}
+                      alt={`Client ${num}`}
+                      width={180}
+                      height={80}
+                      className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              ))}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
+                <div key={`bg-logo-dup-${num}`} className="inline-flex items-center justify-center mx-8 flex-shrink-0">
+                  <div className="h-30 min-w-[120px] max-w-[200px] flex items-center justify-center bg-transparent rounded-lg px-4 py-2">
+                    <Image
+                      src={`/landing_page/clients/client${num}.png`}
+                      alt={`Client ${num}`}
+                      width={180}
+                      height={80}
+                      className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
             <div className="absolute inset-0" style={{
               backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)',
               backgroundSize: '30px 30px'
             }}></div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -234,11 +447,11 @@ export default function Home() {
                 href="tel:021383846"
                 className="flex items-center gap-3 bg-black/40 backdrop-blur-md border-2 border-orange-500/50 hover:bg-orange-600/30 hover:border-orange-400 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl"
               >
-                <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <div className="text-left">
-                  <div className="text-xs text-orange-300">{text.contactBanner.phoneLabel}</div>
+                  <div className="text-xs text-white">{text.contactBanner.phoneLabel}</div>
                   <div className="font-bold text-white">{text.contactBanner.phone}</div>
                 </div>
               </a>
@@ -248,16 +461,31 @@ export default function Home() {
                 href="mailto:info@maplethai.co.th"
                 className="flex items-center gap-3 bg-black/40 backdrop-blur-md border-2 border-orange-500/50 hover:bg-orange-600/30 hover:border-orange-400 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl"
               >
-                <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <div className="text-left">
-                  <div className="text-xs text-orange-300">{text.contactBanner.emailLabel}</div>
+                  <div className="text-xs text-white">{text.contactBanner.emailLabel}</div>
                   <div className="font-bold text-white">{text.contactBanner.email}</div>
                 </div>
               </a>
             </motion.div>
           </div>
+
+          {/* CSS for infinite scroll animation */}
+          <style jsx>{`
+            @keyframes scroll-left {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+            .animate-scroll-left {
+              animation: scroll-left 40s linear infinite;
+            }
+          `}</style>
         </section>
 
         {/* About Company Section with 2 Columns */}
