@@ -187,10 +187,7 @@ export default function Home2() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link
-                className="text-black hover:text-amber-600 transition-colors font-medium"
-                href="/home2"
-              >
+              <Link className="text-black hover:text-amber-600 transition-colors font-medium" href="/home2">
                 {text.nav.home}
               </Link>
 
@@ -270,11 +267,7 @@ export default function Home2() {
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
             <div className="mt-4 md:hidden bg-white">
-              <Link
-                className="block py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium"
-                href="/home2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link className="block py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium" href="/home2" onClick={() => setIsMobileMenuOpen(false)}>
                 {text.nav.home}
               </Link>
 

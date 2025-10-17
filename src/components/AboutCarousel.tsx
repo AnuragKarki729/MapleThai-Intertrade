@@ -18,7 +18,7 @@ const carouselContent = [
     paragraph: 'paragraph2',
    
     alt: 'Expertise',
-    imgClass: 'from-orange-600 to-red-700',
+    imgClass: 'from-amber-600 to-red-700',
     textClass: 'md:text-right',
     layoutClass: 'md:flex-row-reverse',
   },
@@ -60,7 +60,7 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.7 }}
-          className="bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-orange-900/30 shadow-xl hover:shadow-2xl hover:border-orange-600/50 transition-all overflow-hidden"
+          className="bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-orange-900/30 shadow-xl hover:shadow-2xl hover:border-amber-600/50 transition-all overflow-hidden"
         >
           <motion.div
             initial={{ scale: 0, rotate: 180 }}
@@ -69,7 +69,7 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
             className={`flex-shrink-0 ${floatClass}`}
           >
             {/* <div
-              className={`w-16 h-16 md:w-30 md:h-30 bg-gradient-to-br ${currentContent.imgClass} rounded-xl flex items-center justify-center shadow-lg overflow-hidden ring-2 ring-orange-600/50`}
+              className={`w-16 h-16 md:w-30 md:h-30 bg-gradient-to-br ${currentContent.imgClass} rounded-xl flex items-center justify-center shadow-lg overflow-hidden ring-2 ring-amber-600/50`}
             >
               <Image
                 src={currentContent.image}
@@ -93,7 +93,7 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
       </AnimatePresence>
       <button
         onClick={handleNext}
-        className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-orange-600/80 text-white p-2 rounded-full hover:bg-orange-500 transition-all focus:outline-none"
+        className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-amber-600/80 text-white p-2 rounded-full hover:bg-orange-500 transition-all focus:outline-none"
         aria-label="Next slide"
       >
         <svg

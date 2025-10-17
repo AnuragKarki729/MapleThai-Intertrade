@@ -59,7 +59,7 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-amber-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
         aria-label="Previous slide"
       >
         <svg
@@ -79,7 +79,7 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-amber-600/80 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 border border-orange-500/30 hover:border-orange-500"
         aria-label="Next slide"
       >
         <svg

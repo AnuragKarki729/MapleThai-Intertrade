@@ -24,7 +24,7 @@
   --orange-300: #5f3b16;
   --orange-400: #70461a;
   --orange-500: #85521e;
-  --orange-600: #6b4218;
+  --amber-600: #6b4218;
   --orange-700: #523312;
   --orange-800: #3a240d;
   --orange-900: #1f1308;
@@ -82,7 +82,7 @@
   --color-orange-300: var(--orange-300);
   --color-orange-400: var(--orange-400);
   --color-orange-500: var(--orange-500);
-  --color-orange-600: var(--orange-600);
+  --color-amber-600: var(--amber-600);
   --color-orange-700: var(--orange-700);
   --color-orange-800: var(--orange-800);
   --color-orange-900: var(--orange-900);

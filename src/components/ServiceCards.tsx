@@ -98,7 +98,7 @@ function ServiceCard({
 
         {/* Back face - Services */}
         <div
-          className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-orange-600/95 to-orange-800/95 backdrop-blur-sm border border-orange-500/50 shadow-xl p-6 flex flex-col justify-center items-center"
+          className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-amber-600/95 to-orange-800/95 backdrop-blur-sm border border-orange-500/50 shadow-xl p-6 flex flex-col justify-center items-center"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'

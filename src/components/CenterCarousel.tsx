@@ -24,7 +24,7 @@ export default function CenterCarousel({ images, autoPlayInterval = 3000 }: Cent
 
   if (images.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-600/20 to-black">
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-600/20 to-black">
         <div className="text-center">
           <div className="text-orange-500 font-bold text-sm mb-1">Our Services</div>
           <div className="text-white text-xs opacity-70">Click sections</div>
