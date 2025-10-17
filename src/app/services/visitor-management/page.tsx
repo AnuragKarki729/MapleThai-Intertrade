@@ -314,7 +314,7 @@ export default function VisitorManagement() {
                   transition={{ duration: 0.6 }}
                 >
                   <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-600 mb-2 sm:mb-2 md:mb-3 lg:mb-4 leading-tight">
-                    {text.hero.title}
+                    {text.hero.title} 
                   </h1>
                   <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg text-black mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 leading-snug">{text.hero.subtitle}</p>
 
