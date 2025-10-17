@@ -452,8 +452,8 @@ export default function Home2() {
                     alt={`Client ${num}`}
                     width={192}
                     height={192}
-                    className="max-w-full max-h-full w-auto h-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
-                    unoptimized
+                    className="max-w-full max-h-full w-auto h-auto object-contain "
+                    
                   />
                 </div>
               ))}
