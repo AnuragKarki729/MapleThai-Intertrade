@@ -104,13 +104,13 @@ export default function InteractiveServiceMap({ language }: InteractiveServiceMa
               {/* Clickable Button */}
               <div
                 className={`
-                  px-2 sm:px-3 md:px-1 py-1 sm:py-1.5 md:py-2 rounded-md sm:rounded-lg border sm:border-2 transition-all duration-300
+                  px-1 sm:px-1 md:px-1 py-1 sm:py-1 md:py-2 rounded-md sm:rounded-lg border sm:border-0 transition-all duration-300
                   ${
                     hoveredButton === service.id
-                      ? 'bg-orange-500/80 border-orange-400 shadow-lg shadow-orange-500/50'
-                      : 'bg-transparent border-transparent hover:bg-orange-500/70'
+                      ? 'bg-amber-600/80 border-amber-600 shadow-lg shadow-amber-600/50'
+                      : 'bg-transparent border-transparent hover:bg-amber-600'
                   }
-                  backdrop-blur-sm cursor-pointer
+                  cursor-pointer
                 `}
               >
                 <div className="flex items-center">
