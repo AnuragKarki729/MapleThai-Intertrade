@@ -93,13 +93,14 @@ export default function Home2() {
         },
       },
       footer: {
-        tagline: 'Your trusted partner in security.',
-        quickLinks: 'Quick Links',
-        contactUs: 'Contact Us',
-        address: '123 Security Ave, Tech City',
-        email: 'contact@company.com',
-        rights: '© 2024 Company Name. All rights reserved.',
-      },
+  tagline: 'Your trusted partner in security.',
+  quickLinks: 'Quick Links',
+  contactUs: 'Contact Us',
+  address: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  email: 'info@maplethai.com',
+  rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
+},
+
     },
     th: {
       nav: {
@@ -160,13 +161,14 @@ export default function Home2() {
         },
       },
       footer: {
-        tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
-        quickLinks: 'ลิงก์ด่วน',
-        contactUs: 'ติดต่อเรา',
-        address: '123 ถนนรักษาความปลอดภัย เมืองเทคโนโลยี',
-        email: 'contact@company.com',
-        rights: '© 2024 ชื่อบริษัท สงวนลิขสิทธิ์',
-      },
+  tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
+  quickLinks: 'ลิงก์ด่วน',
+  contactUs: 'ติดต่อเรา',
+  address: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  email: 'info@maplethai.com',
+  rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
+},
+
     },
   };
 
@@ -364,9 +366,9 @@ export default function Home2() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-8 inline-block bg-orange-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105"
-              href="#services"
+              href="/services/all-solutions"
             >
-              {text.hero.cta}
+              {text.hero.cta} 
             </motion.a>
           </div>
         </section>
@@ -596,7 +598,7 @@ export default function Home2() {
               <h3 className="font-bold text-lg mb-2 text-amber-800">{text.footer.quickLinks}</h3>
               <ul>
                 <li>
-                  <Link className="text-white hover:text-orange-500" href="/services">
+                  <Link className="text-white hover:text-orange-500" href="/services/all-solutions">
                     {text.nav.services}
                   </Link>
                 </li>

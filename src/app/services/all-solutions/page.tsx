@@ -101,13 +101,14 @@ export default function AllSolutions() {
         },
       ],
       footer: {
-        tagline: 'Your trusted partner in security.',
-        quickLinks: 'Quick Links',
-        contactUs: 'Contact Us',
-        address: '123 Security Ave, Tech City',
-        email: 'contact@company.com',
-        rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
-      },
+  tagline: 'Your trusted partner in security.',
+  quickLinks: 'Quick Links',
+  contactUs: 'Contact Us',
+  address: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  email: 'info@maplethai.com',
+  rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
+},
+
     },
     th: {
       nav: {
@@ -195,13 +196,14 @@ export default function AllSolutions() {
         },
       ],
       footer: {
-        tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
-        quickLinks: 'ลิงก์ด่วน',
-        contactUs: 'ติดต่อเรา',
-        address: '123 ถนนรักษาความปลอดภัย เมืองเทคโนโลยี',
-        email: 'contact@company.com',
-        rights: '© 2024 Maple Thai Intertrade สงวนลิขสิทธิ์',
-      },
+  tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
+  quickLinks: 'ลิงก์ด่วน',
+  contactUs: 'ติดต่อเรา',
+  address: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  email: 'info@maplethai.com',
+  rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
+},
+
     },
   };
 
@@ -677,18 +679,18 @@ export default function AllSolutions() {
             <div>
               <h3 className="font-bold text-lg mb-2 text-amber-800">{text.footer.quickLinks}</h3>
               <ul>
-                <li>
+                {/* <li>
                   <Link className="text-white hover:text-orange-500" href="/">
                     {text.nav.home}
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link className="text-white hover:text-orange-500" href="/home2">
                     {text.nav.home}
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-white hover:text-orange-500" href="/services">
+                  <Link className="text-white hover:text-orange-500" href="/services/all-solutions">
                     {text.nav.services}
                   </Link>
                 </li>

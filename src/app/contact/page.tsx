@@ -65,19 +65,19 @@ export default function ContactUs() {
         submit: 'Send Message',
       },
       contactInfo: {
-        title: 'Contact Information',
-        phone: 'Phone',
-        phoneValue: '+66 2 123 4567',
-        email: 'Email',
-        emailValue: 'info@maplethai.com',
-        address: 'Address',
-        addressValue: '123 Maple Street, Bangkok, Thailand',
-      },
-      quickContact: {
-        title: 'Quick Contact',
-        callButton: 'Call Us Now',
-        lineQR: 'Scan to Add on LINE',
-      },
+  title: 'Contact Information',
+  phone: 'Phone',
+  phoneValue: '089-129-8846, 083-129-8846',          // display format
+  email: 'Email',
+  emailValue: 'info@maplethai.com',
+  address: 'Address',
+  addressValue: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+},
+quickContact: {
+  title: 'Quick Contact',
+  callButton: 'Call Us Now',
+  lineQR: 'Scan to Add on LINE',
+},
       footer: {
         rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
       },
@@ -116,19 +116,20 @@ export default function ContactUs() {
         submit: 'ส่งข้อความ',
       },
       contactInfo: {
-        title: 'ข้อมูลการติดต่อ',
-        phone: 'โทรศัพท์',
-        phoneValue: '+66 2 123 4567',
-        email: 'อีเมล',
-        emailValue: 'info@maplethai.com',
-        address: 'ที่อยู่',
-        addressValue: '123 ถนนเมเปิ้ล กรุงเทพฯ ประเทศไทย',
-      },
-      quickContact: {
-        title: 'ติดต่อด่วน',
-        callButton: 'โทรหาเราทันที',
-        lineQR: 'สแกนเพื่อเพิ่มใน LINE',
-      },
+  title: 'ข้อมูลการติดต่อ',
+  phone: 'โทรศัพท์',
+  phoneValue: '089-129-8846, 083-129-8846',         
+  email: 'อีเมล',
+  emailValue: 'info@maplethai.com',
+  address: 'ที่อยู่',
+  addressValue: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+},
+quickContact: {
+  title: 'ติดต่อด่วน',
+  callButton: 'โทรหาเราทันที',
+  lineQR: 'สแกนเพื่อเพิ่มใน LINE',
+},
+
       footer: {
         rights: '© 2024 Maple Thai Intertrade สงวนลิขสิทธิ์',
       },
@@ -414,7 +415,7 @@ export default function ContactUs() {
               <div className="bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
                 <div className="w-40 h-40 md:w-48 md:h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/contact/line-qr-placeholder.png"
+                    src="/contact/line.jpg"
                     alt="LINE QR Code"
                     width={192}
                     height={192}
@@ -447,11 +448,29 @@ export default function ContactUs() {
           </div>
 
           {/* Map */}
-          <div className="rounded-lg overflow-hidden shadow-lg mb-12">
-            <div className="w-full h-[400px] bg-gray-200 flex items-center justify-center">
-              <p className="text-white">Map Placeholder - Add Google Maps integration here</p>
-            </div>
-          </div>
+<div className="rounded-lg overflow-hidden shadow-lg mb-12">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.0290516042277!2d100.6421558!3d13.6822721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d5f319b3456a1%3A0xd77d60bbc12f5305!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4oeC5gOC4m-C4tOC4pSDguYTguJfguKIg4Lit4Li04LiZ4LmA4LiV4Lit4Lij4LmM4LmA4LiX4Lij4LiUIOC4iOC4s-C4geC4seC4lCAoTWFwbGUgVGhhaSBJbnRlcnRyYWRlIENvLixMdGQuKQ!5e0!3m2!1sth!2sth!4v1730300000000!5m2!1sth!2sth"
+    width="100%"
+    height="400"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+  <div className="text-center mt-3">
+    <a
+      href="https://www.google.com/maps/place/%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%A9%E0%B8%B1%E0%B8%97+%E0%B9%80%E0%B8%A1%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%A5+%E0%B9%84%E0%B8%97%E0%B8%A2+%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%94+%E0%B8%88%E0%B8%B3%E0%B8%81%E0%B8%B1%E0%B8%94+(Maple+Thai+Intertrade+Co.,Ltd.)/@13.6822721,100.6421558,17z/data=!4m14!1m7!3m6!1s0x311d5f319b3456a1:0xd77d60bbc12f5305!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4oeC5gOC4m-C4tOC4pSDguYTguJfguKIg4Lit4Li04LiZ4LmA4LiV4Lit4Lij4LmM4LmA4LiX4Lij4LiUIOC4iOC4s-C4geC4seC4lCAoTWFwbGUgVGhhaSBJbnRlcnRyYWRlIENvLixMdGQuKQ!8m2!3d13.6822721!4d100.6447254!16s%2Fg%2F11wc2l7h2t!3m5!1s0x311d5f319b3456a1:0xd77d60bbc12f5305!8m2!3d13.6822721!4d100.6447254!16s%2Fg%2F11wc2l7h2t?entry=ttu"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block px-5 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
+    >
+      View Larger Map
+    </a>
+  </div>
+</div>
+
+
         </div>
       </main>
 

@@ -589,7 +589,7 @@ export default function Home2() {
               <h3 className="font-bold text-lg mb-2 text-amber-800">{text.footer.quickLinks}</h3>
               <ul>
                 <li>
-                  <Link className="text-white hover:text-orange-500" href="/services">
+                  <Link className="text-white hover:text-orange-500" href="/services/all-solutions">
                     {text.nav.services}
                   </Link>
                 </li>
