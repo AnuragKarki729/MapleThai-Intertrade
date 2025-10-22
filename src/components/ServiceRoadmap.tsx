@@ -25,12 +25,12 @@ const services: Service[] = [
 ];
 
 /** ---- Helpers ---- */
-const idByHref = new Map(services.map(s => [s.href, s.id]));
+// const idByHref = new Map(services.map(s => [s.href, s.id]));
 const milestoneServices = services.filter(s => s.id !== "all-solutions");
 
-function clamp(n: number, min = 0, max = 100) {
-  return Math.max(min, Math.min(max, n));
-}
+// function clamp(n: number, min = 0, max = 100) {
+//   return Math.max(min, Math.min(max, n));
+// }
 
 /** ---- Animation Variants ---- */
 const milestoneVariants = {
@@ -225,25 +225,27 @@ const nextService =
     ? milestoneServices[currentIndex + 1]
     : null;
 
+  type CSSVars = React.CSSProperties & {
+  '--node'?: string;
+  '--gap'?: string;
+  '--icon'?: string;
+  '--rail'?: string;
+  '--glow'?: string;
+};
+
+// Then use:
+const styleVars: CSSVars = {
+  '--node': 'clamp(42px, 7vw, 64px)',
+  '--gap': 'clamp(12px, 3vw, 28px)',
+  '--icon': 'clamp(18px, 5vw, 28px)',
+  '--rail': 'clamp(2px, 0.4vw, 3px)',
+  '--glow': 'clamp(6px, 1.5vw, 10px)',
+};
 
   return (
     <section
       className="w-full bg-white dark:bg-black py-8 md:py-10 mt-16 border-t border-black/10 dark:border-white/10"
-      style={
-        {
-          // Everything scales from these:
-          //  - node (circle): 42→64px
-          //  - gap between items: 12→28px
-          //  - icon size: 18→28px
-          //  - rail thickness: 2→3px
-          //  - glow radius: scales slightly with node
-          ["--node" as any]: "clamp(42px, 7vw, 64px)",
-          ["--gap" as any]: "clamp(12px, 3vw, 28px)",
-          ["--icon" as any]: "clamp(18px, 5vw, 28px)",
-          ["--rail" as any]: "clamp(2px, 0.4vw, 3px)",
-          ["--glow" as any]: "clamp(6px, 1.5vw, 10px)",
-        } as React.CSSProperties
-      }
+      style={styleVars}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-6 md:mb-8">
@@ -288,7 +290,7 @@ const nextService =
           animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
           transition={!prefersReducedMotion ? { delay: 0.2 } : undefined}
         >
-          You've completed all solutions!{" "}
+          You have completed all solutions!{" "}
           <Link href="/contact" className="text-amber-600 dark:text-amber-500 hover:underline font-medium transition-colors">
             Contact us
           </Link>
