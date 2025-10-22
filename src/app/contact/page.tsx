@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguageStore } from '@/store/languageStore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ContactUs() {
   const { language, toggleLanguage } = useLanguageStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -135,25 +136,39 @@ quickContact: {
       },
     },
   };
+   useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 10);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+  
 
   const text = content[language];
+ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md border-b border-zinc-200' : 'bg-transparent'
+  }`;
 
   return (
-    <div className="bg-white text-black font-['Poppins',sans-serif]">
+    <div className=" text-font-['Poppins',sans-serif] pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md">
+      <header className={headerClasses}>
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+            <a href="#" className="flex items-center gap-2">
               <span className="text-amber-600 text-3xl font-bold">🛡️</span>
-              <span className="ml-2 text-xl font-bold text-black">
+              <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
                 Maple Thai Intertrade
               </span>
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link className="text-black hover:text-amber-600 transition-colors font-medium" href="/home2">
+            <div className="hidden md:flex items-center space-x-10 text-sm font-medium">
+              <Link
+                href="/"
+                className="relative text-zinc-100 hover:white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
+              >
                 {text.nav.home}
               </Link>
 
@@ -163,33 +178,33 @@ quickContact: {
                 onMouseEnter={() => setIsServicesDropdownOpen(true)}
                 onMouseLeave={() => setIsServicesDropdownOpen(false)}
               >
-                <button
-                  className="text-black hover:text-amber-600 transition-colors font-medium flex items-center gap-1"
-                >
+                <button className="flex items-center gap-1 text-zinc-100 hover:white transition-colors duration-300">
                   {text.nav.services}
                   <svg
-                    className={`w-4 h-4 transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                    className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-
-                {/* Dropdown Menu */}
-                {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 w-64 z-50">
-                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                      <div className="px-4 py-2 border-b border-gray-200">
-                        <p className="text-sm font-semibold text-amber-600">{text.servicesDropdown.title}</p>
-                      </div>
-                      {text.servicesDropdown.items.map((item, index) => (
+                <div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ease-in-out ${
+                    isServicesDropdownOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+                  }`}
+                >
+                  <div className="bg-white rounded-xl shadow-2xl border border-zinc-100 w-72">
+                    <div className="p-4 border-b border-zinc-100">
+                      <p className="text-sm font-semibold text-amber-600">{text.servicesDropdown.title}</p>
+                    </div>
+                    <div className="py-2">
+                      {text.servicesDropdown.items.map((item) => (
                         <Link
-                          key={index}
+                          key={item.name}
                           href={item.route}
-                          className={`block px-4 py-2 text-sm text-black hover:bg-orange-50 hover:text-white transition-colors ${
-                            item.featured ? 'mb-3 border-b border-gray-200 pb-3' : ''
+                          className={`block px-4 py-2.5 text-sm transition-colors duration-200 ${
+                            item.featured
+                              ? 'font-semibold text-amber-700 hover:bg-amber-50'
+                              : 'text-zinc-700 hover:bg-zinc-100 hover:text-black'
                           }`}
                         >
                           {item.name}
@@ -197,12 +212,12 @@ quickContact: {
                       ))}
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               <Link
-                className="text-amber-600 font-semibold transition-colors"
                 href="/contact"
+                className="relative text-zinc-100 hover:white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {text.nav.contact}
               </Link>
@@ -211,12 +226,12 @@ quickContact: {
             <div className="flex items-center gap-4">
               <button
                 onClick={toggleLanguage}
-                className="px-4 py-2 text-sm font-medium bg-amber-600 text-white rounded-lg hover:bg-orange-700 transition-all transform hover:scale-105"
+                className="hidden md:block text-sm font-medium text-zinc-100 hover:white border border-zinc-300 hover:border-amber-500 rounded-full px-4 py-2 transition-all duration-300"
               >
                 {language === 'en' ? 'ไทย' : 'EN'}
               </button>
               <button
-                className="md:hidden ml-4 p-2 rounded-md text-black hover:bg-gray-100"
+                className="md:hidden p-2 rounded-md text-zinc-800"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,64 +246,31 @@ quickContact: {
           </div>
 
           {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="mt-4 md:hidden bg-white">
-              <Link className="block py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium" href="/home2" onClick={() => setIsMobileMenuOpen(false)}>
-                {text.nav.home}
-              </Link>
-
-              {/* Mobile Services Dropdown */}
+          <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg md:hidden transition-all duration-300 ease-in-out overflow-hidden border-t border-zinc-200 ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
+            <div className="p-4 flex flex-col gap-2">
+              <Link href="/" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.home}</Link>
               <div>
-                <button
-                  className="w-full text-left py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium flex items-center justify-between"
-                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                >
+                <button onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} className="w-full flex justify-between items-center py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium">
                   {text.nav.services}
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <svg className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-
-                {/* Mobile Services Submenu */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="bg-gray-50 py-2">
-                    {text.servicesDropdown.items.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.route}
-                        className={`block py-2 px-8 text-sm text-black hover:bg-gray-200 transition-colors ${
-                          item.featured ? 'font-semibold text-amber-600' : ''
-                        }`}
-                        onClick={() => {
-                          setIsMobileMenuOpen(false);
-                          setIsMobileServicesOpen(false);
-                        }}
-                      >
-                        {item.name}
-                      </Link>
+                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
+                  <div className="pt-2 pl-4 flex flex-col gap-1">
+                    {text.servicesDropdown.items.map(item => (
+                      <Link key={item.name} href={item.route} className={`block py-2 px-4 rounded-lg text-sm ${item.featured ? 'font-semibold text-amber-700' : 'text-zinc-600'} hover:bg-zinc-100`} onClick={() => setIsMobileMenuOpen(false)}>{item.name}</Link>
                     ))}
                   </div>
                 </div>
               </div>
-
-              <Link
-                className="block py-2 px-4 text-sm text-black hover:bg-amber-600 rounded font-medium"
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <Link href="/contact" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.contact}</Link>
+              <button
+                onClick={toggleLanguage}
+                className="mt-4 w-full text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg py-3 transition-colors duration-300"
               >
-                {text.nav.contact}
-              </Link>
+                {language === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English'}
+              </button>
             </div>
-          )}
+          </div>
         </nav>
       </header>
 
@@ -299,7 +281,7 @@ quickContact: {
             <h1 className="text-4xl md:text-5xl font-bold text-amber-600 mb-4">
               {text.hero.title}
             </h1>
-            <p className="text-lg text-gray-600">{text.hero.subtitle}</p>
+            <p className="text-lg text-gray-100">{text.hero.subtitle}</p>
           </div>
 
           {/* Main Content Grid: Form + Quick Contact */}
@@ -310,7 +292,7 @@ quickContact: {
                 <div className="space-y-6">
                   {/* Name Field */}
                   <div>
-                    <label className="block text-base font-medium text-black mb-2">
+                    <label className="block text-base font-medium text-white mb-2">
                       {text.form.name}
                     </label>
                     <input
@@ -319,14 +301,14 @@ quickContact: {
                       placeholder={text.form.namePlaceholder}
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-gray-100 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-400 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
                       required
                     />
                   </div>
 
                   {/* Email Field */}
                   <div>
-                    <label className="block text-base font-medium text-black mb-2">
+                    <label className="block text-base font-medium text-white mb-2">
                       {text.form.email}
                     </label>
                     <input
@@ -335,14 +317,14 @@ quickContact: {
                       placeholder={text.form.emailPlaceholder}
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-gray-100 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-400 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
                       required
                     />
                   </div>
 
                   {/* Subject Field */}
                   <div>
-                    <label className="block text-base font-medium text-black mb-2">
+                    <label className="block text-base font-medium text-white mb-2">
                       {text.form.subject}
                     </label>
                     <input
@@ -351,14 +333,14 @@ quickContact: {
                       placeholder={text.form.subjectPlaceholder}
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-gray-100 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-400 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500"
                       required
                     />
                   </div>
 
                   {/* Message Field */}
                   <div>
-                    <label className="block text-base font-medium text-black mb-2">
+                    <label className="block text-base font-medium text-white mb-2">
                       {text.form.message}
                     </label>
                     <textarea
@@ -367,7 +349,7 @@ quickContact: {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className="w-full px-4 py-3 rounded-lg bg-gray-100 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500 resize-none"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-400 border-none focus:ring-2 focus:ring-amber-600 text-black placeholder-gray-500 resize-none"
                       required
                     ></textarea>
                   </div>
@@ -375,7 +357,7 @@ quickContact: {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors"
+                    className="w-half px-6 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors"
                   >
                     {text.form.submit}
                   </button>
@@ -388,9 +370,9 @@ quickContact: {
               <h2 className="text-2xl font-bold text-black mb-6">{text.quickContact.title}</h2>
 
               {/* Call Button Card */}
-              <div className="bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
+              <div className="bg-amber-80 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
                 <svg
-                  className="w-12 h-12 md:w-16 md:h-16 text-amber-600 mb-4"
+                  className="w-12 h-12 md:w-16 md:h-16 text-amber-900 mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -408,14 +390,14 @@ quickContact: {
                 >
                   {text.quickContact.callButton}
                 </a>
-                <p className="text-gray-600 mt-3 text-sm">{text.contactInfo.phoneValue}</p>
+                <p className="text-gray-100 mt-3 text-sm">{text.contactInfo.phoneValue}</p>
               </div>
 
               {/* LINE QR Code Card */}
-              <div className="bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
+              <div className="bg-amber-80 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
                 <div className="w-40 h-40 md:w-48 md:h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/contact/line.jpg"
+                    src="/contact/line-qr.png"
                     alt="LINE QR Code"
                     width={192}
                     height={192}
@@ -427,7 +409,7 @@ quickContact: {
               </div>
 
               {/* Contact Information */}
-              <div className="bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6">
+              <div className="bg-amber-50 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6">
                 <h3 className="text-lg font-bold text-black mb-4">{text.contactInfo.title}</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
@@ -478,7 +460,7 @@ quickContact: {
       <footer className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-8 mb-6">
-            <Link className="text-white hover:text-orange-500 transition-colors" href="/home2">
+            <Link className="text-white hover:text-orange-500 transition-colors" href="/">
               {text.nav.home}
             </Link>
             <Link className="text-white hover:text-orange-500 transition-colors" href="/services">

@@ -211,7 +211,7 @@ export default function Home() {
                                 hover:scale-105 transition-all duration-300 hover:text-amber-700 transition-colors" href="/">{text.nav.home}</Link>
 
               <Link className="text-sm font-medium border-1 px-4 py-2 rounded-2xl border-amber-600 hover:border-orange-500
-                                hover:scale-105 transition-all duration-300 hover:text-amber-700 transition-colors" href="/home2">{text.nav.home2}</Link>
+                                hover:scale-105 transition-all duration-300 hover:text-amber-700 transition-colors" href="/">{text.nav.home2}</Link>
 
               {/* Services Dropdown */}
               <div
@@ -294,7 +294,7 @@ export default function Home() {
 
                 {/* Home 2 */}
                 <Link
-                  href="/home2"
+                  href="/"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="px-4 py-3 text-sm font-medium text-gray-300 hover:bg-amber-600/20 hover:text-white rounded-lg transition-all"
                 >

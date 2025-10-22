@@ -13,6 +13,14 @@ export default function WarehouseSolution() {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 10);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
   // Smooth scroll function
   const scrollToSection = (sectionId: string) => {
@@ -142,23 +150,29 @@ export default function WarehouseSolution() {
   };
 
   const text = content[language];
+const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md border-b border-zinc-200' : 'bg-transparent'
+  }`;
 
   return (
     <div className="bg-white text-black font-['Poppins',sans-serif]">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md">
+      <header className={headerClasses}>
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+            <a href="#" className="flex items-center gap-2">
               <span className="text-amber-600 text-3xl font-bold">🛡️</span>
-              <span className="ml-2 text-xl font-bold text-black">
+              <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
                 Maple Thai Intertrade
               </span>
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link className="text-black hover:text-amber-600 transition-colors font-medium" href="/home2">
+            <div className="hidden md:flex items-center space-x-10 text-sm font-medium">
+              <Link
+                href="/"
+                className="relative text-zinc-100 hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
+              >
                 {text.nav.home}
               </Link>
 
@@ -168,53 +182,46 @@ export default function WarehouseSolution() {
                 onMouseEnter={() => setIsServicesDropdownOpen(true)}
                 onMouseLeave={() => setIsServicesDropdownOpen(false)}
               >
-                <button
-                  className="text-black hover:text-amber-600 transition-colors font-medium flex items-center gap-1"
-                >
+                <button className="flex items-center gap-1 text-zinc-100 hover:text-white transition-colors duration-300">
                   {text.nav.services}
                   <svg
-                    className={`w-4 h-4 transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                    className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-
-                {/* Dropdown Menu */}
-                {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 w-64 z-50">
-                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                      <div className="px-4 py-2 border-b border-gray-200">
-                        <p className="text-sm font-semibold text-amber-600">{text.servicesDropdown.title}</p>
-                      </div>
-                      {text.servicesDropdown.items.map((item, index) => {
-                        const isActive = item.route === '/services/warehouse-solution';
-                        return (
-                          <Link
-                            key={index}
-                            href={item.route}
-                            className={`block px-4 py-2 text-sm transition-colors ${
-                              isActive
-                                ? 'bg-amber-600 text-white font-semibold'
-                                : 'text-black hover:bg-orange-50 hover:text-white'
-                            } ${
-                              item.featured ? 'mb-3 border-b border-gray-200 pb-3' : ''
-                            }`}
-                          >
-                            {item.name}
-                          </Link>
-                        );
-                      })}
+                <div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ease-in-out ${
+                    isServicesDropdownOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+                  }`}
+                >
+                  <div className="bg-white rounded-xl shadow-2xl border border-zinc-100 w-72">
+                    <div className="p-4 border-b border-zinc-100">
+                      <p className="text-sm font-semibold text-amber-600">{text.servicesDropdown.title}</p>
+                    </div>
+                    <div className="py-2">
+                      {text.servicesDropdown.items.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.route}
+                          className={`block px-4 py-2.5 text-sm transition-colors duration-200 ${
+                            item.featured
+                              ? 'font-semibold text-amber-700 hover:bg-amber-50'
+                              : 'text-zinc-700 hover:bg-zinc-100 hover:text-black'
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               <Link
-                className="text-black hover:text-amber-600 transition-colors font-medium"
                 href="/contact"
+                className="relative text-zinc-100 hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {text.nav.contact}
               </Link>
@@ -223,12 +230,12 @@ export default function WarehouseSolution() {
             <div className="flex items-center gap-4">
               <button
                 onClick={toggleLanguage}
-                className="px-4 py-2 text-sm font-medium bg-amber-600 text-white rounded-lg hover:bg-orange-700 transition-all transform hover:scale-105"
+                className="hidden md:block text-sm font-medium text-zinc-100 hover:text-amber-600 border border-zinc-300 hover:border-amber-500 rounded-full px-4 py-2 transition-all duration-300"
               >
                 {language === 'en' ? 'ไทย' : 'EN'}
               </button>
               <button
-                className="md:hidden ml-4 p-2 rounded-md text-black hover:bg-gray-100"
+                className="md:hidden p-2 rounded-md text-zinc-800"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,70 +250,38 @@ export default function WarehouseSolution() {
           </div>
 
           {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="mt-4 md:hidden bg-white">
-              <Link className="block py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium" href="/home2" onClick={() => setIsMobileMenuOpen(false)}>
-                {text.nav.home}
-              </Link>
-
-              {/* Mobile Services Dropdown */}
+          <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg md:hidden transition-all duration-300 ease-in-out overflow-hidden border-t border-zinc-200 ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
+            <div className="p-4 flex flex-col gap-2">
+              <Link href="/" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.home}</Link>
               <div>
-                <button
-                  className="w-full text-left py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium flex items-center justify-between"
-                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                >
+                <button onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} className="w-full flex justify-between items-center py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium">
                   {text.nav.services}
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <svg className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-
-                {/* Mobile Services Submenu */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isMobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="bg-gray-50 py-2">
-                    {text.servicesDropdown.items.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.route}
-                        className={`block py-2 px-8 text-sm text-black hover:bg-gray-200 transition-colors ${
-                          item.featured ? 'font-semibold text-amber-600' : ''
-                        }`}
-                        onClick={() => {
-                          setIsMobileMenuOpen(false);
-                          setIsMobileServicesOpen(false);
-                        }}
-                      >
-                        {item.name}
-                      </Link>
+                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
+                  <div className="pt-2 pl-4 flex flex-col gap-1">
+                    {text.servicesDropdown.items.map(item => (
+                      <Link key={item.name} href={item.route} className={`block py-2 px-4 rounded-lg text-sm ${item.featured ? 'font-semibold text-amber-700' : 'text-zinc-600'} hover:bg-zinc-100`} onClick={() => setIsMobileMenuOpen(false)}>{item.name}</Link>
                     ))}
                   </div>
                 </div>
               </div>
-
-              <Link
-                className="block py-2 px-4 text-sm text-black hover:bg-gray-100 rounded font-medium"
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <Link href="/contact" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.contact}</Link>
+              <button
+                onClick={toggleLanguage}
+                className="mt-4 w-full text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg py-3 transition-colors duration-300"
               >
-                {text.nav.contact}
-              </Link>
+                {language === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English'}
+              </button>
             </div>
-          )}
+          </div>
         </nav>
       </header>
 
-      <main className="pt-20">
+
+      <main>
         {/* Hero Section - 2 Columns */}
-        <section className="py-16 bg-gradient-to-br from-orange-50 to-white">
+        <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-12 items-start">
               {/* Column 1: Sub-services Navigation (1/4 width) */}
@@ -439,7 +414,7 @@ export default function WarehouseSolution() {
                   </Link>
                 </li> */}
                 <li>
-                  <Link className="text-white hover:text-orange-500" href="/home2">
+                  <Link className="text-white hover:text-orange-500" href="/">
                     {text.nav.home}
                   </Link>
                 </li>
