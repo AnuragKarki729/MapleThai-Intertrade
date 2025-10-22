@@ -6,6 +6,7 @@ import { useLanguageStore } from '@/store/languageStore';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import ServicesDonutChart from '@/components/ServicesDonutChart';
+import ServiceRoadmap from '@/components/ServiceRoadmap';
 
 export default function AllSolutions() {
   const { language, toggleLanguage } = useLanguageStore();
@@ -662,6 +663,8 @@ export default function AllSolutions() {
           </div>
         </section>
       </main>
+
+      <ServiceRoadmap />
 
       {/* Footer */}
       <footer className="bg-black text-white" id="contact">

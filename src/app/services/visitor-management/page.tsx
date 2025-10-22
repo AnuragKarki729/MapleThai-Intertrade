@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLanguageStore } from '@/store/languageStore';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import ServiceRoadmap from '@/components/ServiceRoadmap';
 
 export default function VisitorManagement() {
   const { language, toggleLanguage } = useLanguageStore();
@@ -417,6 +418,8 @@ export default function VisitorManagement() {
         ))}
       </main>
 
+      <ServiceRoadmap />
+      
       {/* Footer */}
       <footer className="bg-black text-white" id="contact">
         <div className="container mx-auto px-6 py-12">

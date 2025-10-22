@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLanguageStore } from '@/store/languageStore';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import ServiceRoadmap from '@/components/ServiceRoadmap';
 
 export default function ParkingManagement() {
   const { language, toggleLanguage } = useLanguageStore();
@@ -464,6 +465,8 @@ export default function ParkingManagement() {
           </section>
         ))}
       </main>
+
+      <ServiceRoadmap />
 
       {/* Footer */}
       <footer className="bg-black text-white" id="contact">

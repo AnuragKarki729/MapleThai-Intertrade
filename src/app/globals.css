@@ -54,6 +54,11 @@
   --neutral-800: #27272a;
   --neutral-900: #18181b;
   --neutral-950: #09090b;
+
+  /* Custom colors for ServiceRoadmap */
+  --primary: #137fec;
+  --background-light: #f6f7f8;
+  --background-dark: #101922;
 }
 
 @theme inline {
