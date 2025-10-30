@@ -64,12 +64,13 @@ export default function ParkingManagement() {
         title: 'What We Do',
         items: [
           { name: 'Our Solutions', route: '/services/all-solutions', featured: true },
-          { name: 'Visitor Management', route: '/services/visitor-management' },
-          { name: 'Parking Management', route: '/services/parking-management' },
           { name: 'Access Manager', route: '/services/access-management' },
-          { name: 'Security Management', route: '/services/security-management' },
-          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
           { name: 'AI Smart', route: '/services/ai-smart' },
+          { name: 'Parking Management', route: '/services/parking-management' },
+          { name: 'Security Management', route: '/services/security-management' },
+          { name: 'Visitor Management', route: '/services/visitor-management' },
+          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
+          
         ],
       },
       hero: {
@@ -119,7 +120,7 @@ export default function ParkingManagement() {
   tagline: 'Your trusted partner in security.',
   quickLinks: 'Quick Links',
   contactUs: 'Contact Us',
-  address: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  address: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
   email: 'info@maplethai.com',
   rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
 },
@@ -133,14 +134,15 @@ export default function ParkingManagement() {
       },
       servicesDropdown: {
         title: 'สิ่งที่เราทำ',
-        items: [
+       items: [
           { name: 'โซลูชันของเรา', route: '/services/all-solutions', featured: true },
-          { name: 'จัดการผู้มาเยือน', route: '/services/visitor-management' },
-          { name: 'จัดการที่จอดรถ', route: '/services/parking-management' },
           { name: 'จัดการการเข้าออก', route: '/services/access-management' },
-          { name: 'จัดการความปลอดภัย', route: '/services/security-management' },
-          { name: 'โซลูชันคลังสินค้า', route: '/services/warehouse-solution' },
           { name: 'AI อัจฉริยะ', route: '/services/ai-smart' },
+          { name: 'จัดการที่จอดรถ', route: '/services/parking-management' },
+          { name: 'จัดการความปลอดภัย', route: '/services/security-management' },
+          { name: 'จัดการผู้มาเยือน', route: '/services/visitor-management' },
+          { name: 'โซลูชันคลังสินค้า', route: '/services/warehouse-solution' },
+          
         ],
       },
       hero: {
@@ -190,7 +192,7 @@ export default function ParkingManagement() {
   tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
   quickLinks: 'ลิงก์ด่วน',
   contactUs: 'ติดต่อเรา',
-  address: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  address: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
   email: 'info@maplethai.com',
   rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
 },
@@ -210,8 +212,12 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="flex items-center gap-2">
-              <span className="text-amber-600 text-3xl font-bold">🛡️</span>
-              <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
+              <img
+  src="/mp-logo.png"
+  alt="Logo"
+  className="h-10 w-10 object-contain rounded-full"
+/>
+              <span className="text-2xl font-semibold text-zinc-100 tracking-tight">
                 Maple Thai Intertrade
               </span>
             </a>
@@ -329,7 +335,15 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
 
       <main>
         {/* Hero Section - 2 Columns */}
-        <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
+        {/* <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white"> */}
+         <section className="relative pt-24 pb-16 overflow-hidden">
+  {/* Blurred Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[5px]"
+    style={{ backgroundImage: "url('/services/parking-management/parkingHerobg2.png')" }}
+  ></div>
+  <div className="absolute inset-0 -z-10 bg-white backdrop-blur-sm"></div>
+
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-12 items-start">
               {/* Column 1: Sub-services Navigation (1/4 width) */}
@@ -342,10 +356,10 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
                   <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-600 mb-2 sm:mb-2 md:mb-3 lg:mb-4 leading-tight">
                     {text.hero.title}
                   </h1>
-                  <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg text-black mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 leading-snug">{text.hero.subtitle}</p>
+                  <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg text-white font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-8 leading-snug">{text.hero.subtitle}</p>
 
                   <div className="bg-transparent rounded-lg md:rounded-xl lg:rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-2 sm:p-3 md:p-3 lg:p-4 xl:p-6">
-                    <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl font-semibold text-black mb-2 sm:mb-3 md:mb-3 lg:mb-4 xl:mb-6">
+                    <h3 className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl font-semibold text-white mb-2 sm:mb-3 md:mb-3 lg:mb-4 xl:mb-6">
                       {text.hero.subservices}
                     </h3>
                     <ul className="space-y-1.5 sm:space-y-2 md:space-y-2 lg:space-y-3 xl:space-y-4">
@@ -357,12 +371,16 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                         >
                           <button
-                            onClick={() => scrollToSection(service.id)}
-                            className="w-full text-left px-2 sm:px-2.5 md:px-2.5 lg:px-3 xl:px-4 py-1.5 sm:py-2 md:py-2 lg:py-2.5 xl:py-3 rounded-md lg:rounded-lg transition-all
-                            text-xs sm:text-sm md:text-sm lg:text-base bg-transparent text-black hover:bg-orange-90 shadow-lg hover:scale-105 hover:text-white cursor-pointer"
-                          >
-                            <span className="font-medium leading-tight">{service.title}</span>
-                          </button>
+  onClick={() => scrollToSection(service.id)}
+  className="text-left px-2 sm:px-2.5 md:px-2.5 lg:px-3 xl:px-4 py-1.5 sm:py-2 md:py-2 lg:py-2.5 xl:py-3 
+             rounded-md lg:rounded-lg transition-all
+             text-xs sm:text-sm md:text-sm lg:text-base 
+             bg-amber-700 text-black hover:bg-orange-90 shadow-lg hover:scale-105 hover:text-white 
+             cursor-pointer inline-block"
+>
+  <span className="font-medium leading-tight">{service.title}</span>
+</button>
+
                         </motion.li>
                       ))}
                     </ul>

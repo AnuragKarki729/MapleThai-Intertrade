@@ -105,9 +105,9 @@ export default function Home2() {
   tagline: 'Your trusted partner in security.',
   quickLinks: 'Quick Links',
   contactUs: 'Contact Us',
-  address: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  address: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
   email: 'info@maplethai.com',
-  rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
+  rights: '© 2025 Maple Thai Intertrade. All rights reserved.',
 },
 
     },
@@ -173,7 +173,7 @@ export default function Home2() {
   tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
   quickLinks: 'ลิงก์ด่วน',
   contactUs: 'ติดต่อเรา',
-  address: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  address: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
   email: 'info@maplethai.com',
   rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
 },
@@ -194,7 +194,11 @@ export default function Home2() {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="flex items-center gap-2">
-              <span className="text-amber-600 text-3xl font-bold">🛡️</span>
+              <img
+  src="/mp-logo.png"
+  alt="Logo"
+  className="h-10 w-10 object-contain rounded-full"
+/>
               <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
                 Maple Thai Intertrade
               </span>

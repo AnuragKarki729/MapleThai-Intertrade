@@ -36,12 +36,13 @@ export default function AllSolutions() {
         title: 'What We Do',
         items: [
           { name: 'Our Solutions', route: '/services/all-solutions', featured: true },
-          { name: 'Visitor Management', route: '/services/visitor-management' },
-          { name: 'Parking Management', route: '/services/parking-management' },
           { name: 'Access Manager', route: '/services/access-management' },
-          { name: 'Security Management', route: '/services/security-management' },
-          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
           { name: 'AI Smart', route: '/services/ai-smart' },
+          { name: 'Parking Management', route: '/services/parking-management' },
+          { name: 'Security Management', route: '/services/security-management' },
+          { name: 'Visitor Management', route: '/services/visitor-management' },
+          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
+          
         ],
       },
       hero: {
@@ -115,7 +116,7 @@ export default function AllSolutions() {
   tagline: 'Your trusted partner in security.',
   quickLinks: 'Quick Links',
   contactUs: 'Contact Us',
-  address: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  address: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
   email: 'info@maplethai.com',
   rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
 },
@@ -131,12 +132,13 @@ export default function AllSolutions() {
         title: 'สิ่งที่เราทำ',
         items: [
           { name: 'โซลูชันของเรา', route: '/services/all-solutions', featured: true },
-          { name: 'จัดการผู้มาเยือน', route: '/services/visitor-management' },
-          { name: 'จัดการที่จอดรถ', route: '/services/parking-management' },
           { name: 'จัดการการเข้าออก', route: '/services/access-management' },
-          { name: 'จัดการความปลอดภัย', route: '/services/security-management' },
-          { name: 'โซลูชันคลังสินค้า', route: '/services/warehouse-solution' },
           { name: 'AI อัจฉริยะ', route: '/services/ai-smart' },
+          { name: 'จัดการที่จอดรถ', route: '/services/parking-management' },
+          { name: 'จัดการความปลอดภัย', route: '/services/security-management' },
+          { name: 'จัดการผู้มาเยือน', route: '/services/visitor-management' },
+          { name: 'โซลูชันคลังสินค้า', route: '/services/warehouse-solution' },
+          
         ],
       },
       hero: {
@@ -210,7 +212,7 @@ export default function AllSolutions() {
   tagline: 'พันธมิตรที่เชื่อถือได้ของคุณด้านความปลอดภัย',
   quickLinks: 'ลิงก์ด่วน',
   contactUs: 'ติดต่อเรา',
-  address: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  address: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
   email: 'info@maplethai.com',
   rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
 },
@@ -230,8 +232,12 @@ export default function AllSolutions() {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="flex items-center gap-2">
-              <span className="text-amber-600 text-3xl font-bold">🛡️</span>
-              <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
+              <img
+  src="/mp-logo.png"
+  alt="Logo"
+  className="h-10 w-10 object-contain rounded-full"
+/>
+              <span className="text-2xl font-semibold text-zinc-100 tracking-tight">
                 Maple Thai Intertrade
               </span>
             </a>
@@ -350,11 +356,19 @@ export default function AllSolutions() {
 
       <main>
         {/* Hero Section with Donut Chart */}
-        <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white relative overflow-hidden">
+        {/* <section className="pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white relative overflow-hidden"> */}
+      <section className="relative pt-24 pb-16 overflow-hidden">
+  {/* Blurred Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px]"
+    style={{ backgroundImage: "url('/heroSection.png')" }}
+  ></div>
+  <div className="absolute inset-0 -z-10 bg-white backdrop-blur-sm"></div>
+
           {/* Background decorative elements */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl -z-10"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/20 rounded-full blur-3xl -z-10"></div>
-
+          <div className="relative z-10">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 items-center">
               {/* Left Column - Text (1/4 on large screens) */}
@@ -401,7 +415,7 @@ export default function AllSolutions() {
                 >
                   {text.hero.stats.map((stat, index) => (
                     <div key={index} className="text-center lg:text-left">
-                      <div className="text-2xl md:text-3xl font-bold text-amber-800 mb-1">
+                      <div className="text-2xl md:text-3xl font-bold text-amber-100 mb-1">
                         {stat.value}
                       </div>
                       <div className="text-xs md:text-sm text-black leading-tight">
@@ -458,7 +472,7 @@ export default function AllSolutions() {
               >
                 {text.hero.stats.map((stat, index) => (
                   <div key={index} className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-amber-800 mb-1">
+                    <div className="text-2xl md:text-3xl font-bold text-amber-100 mb-1">
                       {stat.value}
                     </div>
                     <div className="text-xs md:text-sm text-black leading-tight">
@@ -494,6 +508,7 @@ export default function AllSolutions() {
                   </div>
                 </div>
               </motion.div>
+            </div>
             </div>
           </div>
         </section>

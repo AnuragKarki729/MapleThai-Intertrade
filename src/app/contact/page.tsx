@@ -42,12 +42,13 @@ export default function ContactUs() {
         title: 'What We Do',
         items: [
           { name: 'Our Solutions', route: '/services/all-solutions', featured: true },
-          { name: 'Visitor Management', route: '/services/visitor-management' },
-          { name: 'Parking Management', route: '/services/parking-management' },
           { name: 'Access Manager', route: '/services/access-management' },
-          { name: 'Security Management', route: '/services/security-management' },
-          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
           { name: 'AI Smart', route: '/services/ai-smart' },
+          { name: 'Parking Management', route: '/services/parking-management' },
+          { name: 'Security Management', route: '/services/security-management' },
+          { name: 'Visitor Management', route: '/services/visitor-management' },
+          { name: 'Warehouse Solution', route: '/services/warehouse-solution' },
+          
         ],
       },
       hero: {
@@ -68,11 +69,11 @@ export default function ContactUs() {
       contactInfo: {
   title: 'Contact Information',
   phone: 'Phone',
-  phoneValue: '089-129-8846, 083-129-8846',          // display format
+  phoneValue: '02-138-3848',          // display format
   email: 'Email',
   emailValue: 'info@maplethai.com',
   address: 'Address',
-  addressValue: '181 Moo 5, Srinagarindra Rd, Samrong Nua, Mueang Samut Prakan District, Samut Prakan 10270, Thailand',
+  addressValue: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
 },
 quickContact: {
   title: 'Quick Contact',
@@ -123,7 +124,7 @@ quickContact: {
   email: 'อีเมล',
   emailValue: 'info@maplethai.com',
   address: 'ที่อยู่',
-  addressValue: '181 หมู่ 5 ถนนศรีนครินทร์ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จังหวัดสมุทรปราการ 10270',
+  addressValue: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
 },
 quickContact: {
   title: 'ติดต่อด่วน',
@@ -151,14 +152,30 @@ quickContact: {
   }`;
 
   return (
-    <div className=" text-font-['Poppins',sans-serif] pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
-      {/* Header */}
+    // <div className=" text-font-['Poppins',sans-serif] pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
+    <div className="relative font-['Poppins',sans-serif] pt-24 pb-16 overflow-hidden">
+  {/* Background image (bottom layer) */}
+  <div
+    className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat blur-sm pointer-events-none"
+    style={{ backgroundImage: "url('/contactBg.png')" }}
+    aria-hidden="true"
+  />
+
+  {/* Optional whitewash overlay */}
+  <div className="absolute inset-0 -z-10 bg-black/50 backdrop-blur-[1px]" aria-hidden="true" />
+   <div className="relative z-10">
+  
+    {/* Header */}
       <header className={headerClasses}>
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="flex items-center gap-2">
-              <span className="text-amber-600 text-3xl font-bold">🛡️</span>
-              <span className="text-2xl font-semibold text-zinc-900 tracking-tight">
+              <img
+  src="/mp-logo.png"
+  alt="Logo"
+  className="h-10 w-10 object-contain rounded-full"
+/>
+              <span className="text-2xl font-semibold text-zinc-100 tracking-tight">
                 Maple Thai Intertrade
               </span>
             </a>
@@ -367,7 +384,7 @@ quickContact: {
 
             {/* Right Column: Quick Contact (appears first on mobile) */}
             <div className="order-1 md:order-2 space-y-6">
-              <h2 className="text-2xl font-bold text-black mb-6">{text.quickContact.title}</h2>
+              <h2 className="text-2xl font-bold text-white mb-6">{text.quickContact.title}</h2>
 
               {/* Call Button Card */}
               <div className="bg-amber-80 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
@@ -405,7 +422,7 @@ quickContact: {
                     unoptimized
                   />
                 </div>
-                <p className="text-black font-semibold text-center text-sm md:text-base">{text.quickContact.lineQR}</p>
+                <p className="text-white font-semibold text-center text-sm md:text-base">{text.quickContact.lineQR}</p>
               </div>
 
               {/* Contact Information */}
@@ -457,7 +474,7 @@ quickContact: {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
+      <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-8 mb-6">
             <Link className="text-white hover:text-orange-500 transition-colors" href="/">
@@ -473,6 +490,7 @@ quickContact: {
           <p className="text-center text-white">{text.footer.rights}</p>
         </div>
       </footer>
+    </div>
     </div>
   );
 }
