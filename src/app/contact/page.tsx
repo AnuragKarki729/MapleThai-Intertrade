@@ -20,8 +20,18 @@ export default function ContactUs() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    
+    const targetEmail = 'admin@maplethai.co.th';
+    const emailSubject = 'Website Inquiry: สอบถามรายละเอียดจากเว็บไซต์';
+    
+    // Construct the email body with the form details
+    const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+    
+    // Create the mailto link
+    const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open the user's default email client
+    window.location.href = mailtoLink;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,7 +81,7 @@ export default function ContactUs() {
   phone: 'Phone',
   phoneValue: '02-138-3848',          // display format
   email: 'Email',
-  emailValue: 'info@maplethai.com',
+  emailValue: 'admin@maplethai.co.th',
   address: 'Address',
   addressValue: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
 },
@@ -120,9 +130,9 @@ quickContact: {
       contactInfo: {
   title: 'ข้อมูลการติดต่อ',
   phone: 'โทรศัพท์',
-  phoneValue: '089-129-8846, 083-129-8846',         
+  phoneValue: '02-138-3848',         
   email: 'อีเมล',
-  emailValue: 'info@maplethai.com',
+  emailValue: 'admin@maplethai.co.th',
   address: 'ที่อยู่',
   addressValue: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
 },
@@ -153,7 +163,7 @@ quickContact: {
 
   return (
     // <div className=" text-font-['Poppins',sans-serif] pt-24 pb-16 bg-gradient-to-br from-orange-50 to-white">
-    <div className="relative font-['Poppins',sans-serif] pt-24 pb-16 overflow-hidden">
+    <div className="relative pt-24 pb-16 overflow-hidden">
   {/* Background image (bottom layer) */}
   <div
     className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat blur-sm pointer-events-none"
@@ -165,131 +175,7 @@ quickContact: {
   <div className="absolute inset-0 -z-10 bg-black/50 backdrop-blur-[1px]" aria-hidden="true" />
    <div className="relative z-10">
   
-    {/* Header */}
-      <header className={headerClasses}>
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <a href="#" className="flex items-center gap-2">
-              <img
-  src="/mp-logo.png"
-  alt="Logo"
-  className="h-10 w-10 object-contain rounded-full"
-/>
-              <span className="text-2xl font-semibold text-zinc-100 tracking-tight">
-                Maple Thai Intertrade
-              </span>
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-10 text-sm font-medium">
-              <Link
-                href="/"
-                className="relative text-zinc-100 hover:white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {text.nav.home}
-              </Link>
-
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                onMouseLeave={() => setIsServicesDropdownOpen(false)}
-              >
-                <button className="flex items-center gap-1 text-zinc-100 hover:white transition-colors duration-300">
-                  {text.nav.services}
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ease-in-out ${
-                    isServicesDropdownOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-                  }`}
-                >
-                  <div className="bg-white rounded-xl shadow-2xl border border-zinc-100 w-72">
-                    <div className="p-4 border-b border-zinc-100">
-                      <p className="text-sm font-semibold text-amber-600">{text.servicesDropdown.title}</p>
-                    </div>
-                    <div className="py-2">
-                      {text.servicesDropdown.items.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.route}
-                          className={`block px-4 py-2.5 text-sm transition-colors duration-200 ${
-                            item.featured
-                              ? 'font-semibold text-amber-700 hover:bg-amber-50'
-                              : 'text-zinc-700 hover:bg-zinc-100 hover:text-black'
-                          }`}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                href="/contact"
-                className="relative text-zinc-100 hover:white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {text.nav.contact}
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <button
-                onClick={toggleLanguage}
-                className="hidden md:block text-sm font-medium text-zinc-100 hover:white border border-zinc-300 hover:border-amber-500 rounded-full px-4 py-2 transition-all duration-300"
-              >
-                {language === 'en' ? 'ไทย' : 'EN'}
-              </button>
-              <button
-                className="md:hidden p-2 rounded-md text-zinc-800"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {isMobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg md:hidden transition-all duration-300 ease-in-out overflow-hidden border-t border-zinc-200 ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
-            <div className="p-4 flex flex-col gap-2">
-              <Link href="/" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.home}</Link>
-              <div>
-                <button onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} className="w-full flex justify-between items-center py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium">
-                  {text.nav.services}
-                  <svg className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
-                  <div className="pt-2 pl-4 flex flex-col gap-1">
-                    {text.servicesDropdown.items.map(item => (
-                      <Link key={item.name} href={item.route} className={`block py-2 px-4 rounded-lg text-sm ${item.featured ? 'font-semibold text-amber-700' : 'text-zinc-600'} hover:bg-zinc-100`} onClick={() => setIsMobileMenuOpen(false)}>{item.name}</Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <Link href="/contact" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.contact}</Link>
-              <button
-                onClick={toggleLanguage}
-                className="mt-4 w-full text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg py-3 transition-colors duration-300"
-              >
-                {language === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English'}
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
+    {/* Header handled by GlobalHeader in layout */}
 
       <main className="pt-20">
         <div className="container mx-auto px-6 py-16 max-w-6xl">
@@ -374,7 +260,7 @@ quickContact: {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-half px-6 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors"
+                    className="cursor-pointer w-half px-6 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors"
                   >
                     {text.form.submit}
                   </button>
@@ -389,7 +275,7 @@ quickContact: {
               {/* Call Button Card */}
               <div className="bg-amber-80 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.1)] p-6 flex flex-col items-center justify-center">
                 <svg
-                  className="w-12 h-12 md:w-16 md:h-16 text-amber-900 mb-4"
+                  className="cursor-pointer w-12 h-12 md:w-16 md:h-16 text-amber-100 mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -402,7 +288,7 @@ quickContact: {
                   />
                 </svg>
                 <a
-                  href="tel:+6621234567"
+                  href="tel:021383848"
                   className="px-6 py-3 md:px-8 md:py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors text-center text-sm md:text-base"
                 >
                   {text.quickContact.callButton}
@@ -419,7 +305,6 @@ quickContact: {
                     width={192}
                     height={192}
                     className="w-full h-full object-cover"
-                    unoptimized
                   />
                 </div>
                 <p className="text-white font-semibold text-center text-sm md:text-base">{text.quickContact.lineQR}</p>
@@ -462,7 +347,7 @@ quickContact: {
       href="https://www.google.com/maps/place/%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%A9%E0%B8%B1%E0%B8%97+%E0%B9%80%E0%B8%A1%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%A5+%E0%B9%84%E0%B8%97%E0%B8%A2+%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%94+%E0%B8%88%E0%B8%B3%E0%B8%81%E0%B8%B1%E0%B8%94+(Maple+Thai+Intertrade+Co.,Ltd.)/@13.6822721,100.6421558,17z/data=!4m14!1m7!3m6!1s0x311d5f319b3456a1:0xd77d60bbc12f5305!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4oeC5gOC4m-C4tOC4pSDguYTguJfguKIg4Lit4Li04LiZ4LmA4LiV4Lit4Lij4LmM4LmA4LiX4Lij4LiUIOC4iOC4s-C4geC4seC4lCAoTWFwbGUgVGhhaSBJbnRlcnRyYWRlIENvLixMdGQuKQ!8m2!3d13.6822721!4d100.6447254!16s%2Fg%2F11wc2l7h2t!3m5!1s0x311d5f319b3456a1:0xd77d60bbc12f5305!8m2!3d13.6822721!4d100.6447254!16s%2Fg%2F11wc2l7h2t?entry=ttu"
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block px-5 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
+      className="cursor-pointer inline-block px-5 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
     >
       View Larger Map
     </a>
@@ -473,23 +358,7 @@ quickContact: {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-8 mb-6">
-            <Link className="text-white hover:text-orange-500 transition-colors" href="/">
-              {text.nav.home}
-            </Link>
-            <Link className="text-white hover:text-orange-500 transition-colors" href="/services">
-              {text.nav.services}
-            </Link>
-            <Link className="text-white hover:text-orange-500 transition-colors" href="/contact">
-              {text.nav.contact}
-            </Link>
-          </div>
-          <p className="text-center text-white">{text.footer.rights}</p>
-        </div>
-      </footer>
+      {/* Footer handled by GlobalFooter in layout */}
     </div>
     </div>
   );

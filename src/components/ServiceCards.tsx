@@ -82,7 +82,6 @@ function ServiceCard({
               alt={category.name}
               fill
               className="object-cover"
-              unoptimized
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />

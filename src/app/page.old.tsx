@@ -71,8 +71,8 @@ export default function Home() {
         subtitle: 'Leading provider of comprehensive security systems and equipment in Thailand',
       },
       contactBanner: {
-        phone: '02 138 3846-8',
-        email: 'info@maplethai.co.th',
+        phone: '02 138 3848',
+        email: 'admin@maplethai.co.th',
         phoneLabel: 'Call Us',
         emailLabel: 'Email Us',
       },
@@ -130,8 +130,8 @@ export default function Home() {
         subtitle: 'ผู้นำด้านระบบรักษาความปลอดภัยและอุปกรณ์ครบวงจรในประเทศไทย',
       },
       contactBanner: {
-        phone: '02 138 3846-8',
-        email: 'info@maplethai.co.th',
+        phone: '02 138 3848',
+        email: 'admin@maplethai.co.th',
         phoneLabel: 'โทรหาเรา',
         emailLabel: 'อีเมลเรา',
       },
@@ -404,7 +404,6 @@ export default function Home() {
                       width={180}
                       height={80}
                       className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
-                      unoptimized
                     />
                   </div>
                 </div>
@@ -419,7 +418,6 @@ export default function Home() {
                       width={180}
                       height={80}
                       className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
-                      unoptimized
                     />
                   </div>
                 </div>
@@ -433,7 +431,6 @@ export default function Home() {
                       width={180}
                       height={80}
                       className="h-auto max-h-[200px] w-auto object-contain filter brightness-150 contrast-125"
-                      unoptimized
                     />
                   </div>
                 </div>
@@ -472,7 +469,7 @@ export default function Home() {
 
               {/* Email */}
               <a
-                href="mailto:info@maplethai.co.th"
+                href="mailto:admin@maplethai.co.th"
                 className="flex items-center gap-3 bg-black/40 backdrop-blur-md border-2 border-orange-500/50 hover:bg-amber-600/30 hover:border-orange-400 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl"
               >
                 <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -530,7 +527,6 @@ export default function Home() {
                         width={80}
                         height={80}
                         className="w-full h-full object-cover"
-                        unoptimized
                       />
                     </div>
                   </motion.div>
@@ -559,7 +555,6 @@ export default function Home() {
                     width={600}
                     height={600}
                     className="w-full h-auto object-contain rounded-lg"
-                    unoptimized
                   />
                 </motion.div>
               </div>
@@ -580,7 +575,6 @@ export default function Home() {
                     width={600}
                     height={600}
                     className="w-full h-auto object-contain rounded-lg"
-                    unoptimized
                   />
                 </motion.div>
 

@@ -50,7 +50,6 @@ export default function Carousel({ images, autoPlayInterval = 5000 }: CarouselPr
               fill
               className="object-contain"
               priority={index === 0}
-              unoptimized
             />
           </div>
         ))}

@@ -121,7 +121,7 @@ export default function ParkingManagement() {
   quickLinks: 'Quick Links',
   contactUs: 'Contact Us',
   address: 'Maple Thai Intertrade Co.,Ltd. 3/201 Soi Srinakarin 46/1 (Pramote) Nong Bon Subdistrict, Prawet District, Bangkok 10250',
-  email: 'info@maplethai.com',
+  email: 'admin@maplethai.co.th',
   rights: '© 2024 Maple Thai Intertrade. All rights reserved.',
 },
 
@@ -193,7 +193,7 @@ export default function ParkingManagement() {
   quickLinks: 'ลิงก์ด่วน',
   contactUs: 'ติดต่อเรา',
   address: 'บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด 3/201 ซอยศรีนครินทร์ 46/1 (ประโมทย์) แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250',
-  email: 'info@maplethai.com',
+  email: 'admin@maplethai.co.th',
   rights: '© 2024 บริษัท เมเปิ้ล ไทย อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์',
 },
 
@@ -206,7 +206,7 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
   }`;
 
   return (
-    <div className="bg-white text-black font-['Poppins',sans-serif]">
+    <div className="bg-white text-black">
       {/* Header */}
       <header className={headerClasses}>
         <nav className="container mx-auto px-6 py-4">
@@ -401,7 +401,6 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
                   width={1093}
                   height={782}
                   className="w-full h-full object-cover"
-                  unoptimized
                 />
               </motion.div>
             </div>
@@ -436,7 +435,6 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
                     alt={service.title}
                     fill
                     className="object-cover"
-                    unoptimized
                   />
                 </motion.div>
 
@@ -463,45 +461,7 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
 
       <ServiceRoadmap />
 
-      {/* Footer */}
-      <footer className="bg-black text-white" id="contact">
-        <div className="container mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-amber-800">Maple Thai Intertrade</h3>
-              <p className="text-white">{text.footer.tagline}</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-amber-800">{text.footer.quickLinks}</h3>
-              <ul>
-                {/* <li>
-                  <Link className="text-white hover:text-orange-500" href="/">
-                    {text.nav.home}
-                  </Link>
-                </li> */}
-                <li>
-                  <Link className="text-white hover:text-orange-500" href="/">
-                    {text.nav.home}
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white hover:text-orange-500" href="/services/all-solutions">
-                    {text.nav.services}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-2 text-amber-800">{text.footer.contactUs}</h3>
-              <p className="text-white">{text.footer.address}</p>
-              <p className="text-white">{text.footer.email}</p>
-            </div>
-          </div>
-          <div className="mt-8 border-t border-gray-700 pt-6 text-center text-white text-sm">
-            {text.footer.rights}
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }

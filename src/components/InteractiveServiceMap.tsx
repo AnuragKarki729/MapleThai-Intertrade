@@ -79,7 +79,6 @@ export default function InteractiveServiceMap({ language }: InteractiveServiceMa
           height={870}
           className="w-full h-auto object-contain"
           priority
-          unoptimized
         />
 
         {/* Clickable Buttons Overlay */}

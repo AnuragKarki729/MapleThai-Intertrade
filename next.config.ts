@@ -12,8 +12,7 @@ const nextConfig: NextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
-    // Disable image optimization in development to prevent caching issues
-    unoptimized: process.env.NODE_ENV === 'development',
+    // Removed unoptimized setting to enable image optimization
   },
 };
 

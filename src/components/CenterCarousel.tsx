@@ -49,7 +49,6 @@ export default function CenterCarousel({ images, autoPlayInterval = 3000 }: Cent
             alt={`Service ${currentIndex + 1}`}
             fill
             className="object-cover"
-            unoptimized
           />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>

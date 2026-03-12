@@ -77,7 +77,6 @@ export default function AboutCarousel({ text }: AboutCarouselProps) {
                 width={80}
                 height={80}
                 className="w-full h-full object-cover"
-                unoptimized
               />
             </div> */}
           </motion.div>
