@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import GlobalHeader from "@/components/GlobalHeader";
 import GlobalFooter from "@/components/GlobalFooter";
+import LineFloatingButton from "@/components/LineFloatingButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <GlobalHeader />
         {children}
         <GlobalFooter />
+        <LineFloatingButton />
       </body>
     </html>
   );
