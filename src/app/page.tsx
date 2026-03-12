@@ -184,7 +184,7 @@ export default function Home2() {
   const text = content[language];
 
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md border-b border-zinc-200' : 'bg-transparent'
+    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md' : 'bg-transparent'
   }`;
 
   return (

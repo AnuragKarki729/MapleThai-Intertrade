@@ -65,7 +65,7 @@ export default function GlobalHeader() {
   const text = content[language];
 
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md border-b border-zinc-200' : 'bg-transparent'
+    isScrolled ? 'bg-amber-600/80 backdrop-blur-lg shadow-md' : 'bg-transparent'
   }`;
 
   return (
@@ -151,7 +151,7 @@ export default function GlobalHeader() {
               {language === 'en' ? 'ไทย' : 'EN'}
             </button>
             <button
-              className="md:hidden p-2 rounded-md text-zinc-100"
+              className={`cursor-pointer md:hidden p-2 rounded-md transition-colors duration-300 ${isScrolled ? 'text-zinc-800' : 'text-zinc-100'}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +166,7 @@ export default function GlobalHeader() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg md:hidden transition-all duration-300 ease-in-out overflow-hidden border-t border-zinc-200 ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
+        <div className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
           <div className="p-4 flex flex-col gap-2">
             <Link href="/" className="block py-3 px-4 text-zinc-700 hover:bg-zinc-100 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>{text.nav.home}</Link>
             <div>
