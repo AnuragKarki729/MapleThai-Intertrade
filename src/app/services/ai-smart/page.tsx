@@ -255,7 +255,7 @@ const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-3
                 {language === 'en' ? 'ไทย' : 'EN'}
               </button>
               <button
-                className="md:hidden p-2 rounded-md text-zinc-800"
+                className={`cursor-pointer md:hidden p-2 rounded-md transition-colors duration-300 ${isScrolled ? 'text-zinc-800' : 'text-zinc-100'}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
